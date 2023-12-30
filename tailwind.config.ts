@@ -14,7 +14,7 @@ const config: Config = {
         ligthemes: {
           primary: "#f4aa3a",
           secondary: "#f4f4a1",
-          accent: " #1be885",
+          accent: "#1be885",
           neutral: "#272136",
           "base-100": "#ffffff",
           info: "#778ad4",

@@ -9,6 +9,7 @@ export default async function Home() {
     orderBy: { id: 'desc' }
   })
 
+
   return (
     <div>
       <div className='hero rounded-xl bg-base-200'>

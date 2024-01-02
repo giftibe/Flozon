@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db/prisma"
 import FormSubmitButtom from '@/components/FormSubmitButtom'
 import { redirect } from "next/navigation";
 export const metadata = {
-    title: 'Add Product - Flowmazon'
+    title: 'Add Product - Flozon'
 }
 
 async function addProduct(formData: FormData) {

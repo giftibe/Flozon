@@ -5,6 +5,7 @@ import { Adapter } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google"
 import NextAuth from "next-auth/next";
 import { env } from "@/lib/env";
+import { mergeAnonymousCartIntoUserAccount } from "@/lib/db/carts";
 
 
 export const authOptions: NextAuthOptions = {
@@ -20,6 +21,12 @@ export const authOptions: NextAuthOptions = {
         session({ session, user }) {
             session.user.id = user.id
             return session;
+        },
+    },
+
+    events:{
+        async signIn({user}) {
+            await mergeAnonymousCartIntoUserAccount(user.id)
         },
     }
 }

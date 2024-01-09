@@ -9,6 +9,8 @@ import { mergeAnonymousCartIntoUserAccount } from "@/lib/db/carts";
 import { PrismaClient } from "@prisma/client";
 
 
+import { NextApiRequest, NextApiResponse } from "next";
+
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
     providers: [
@@ -28,10 +30,10 @@ export const authOptions: NextAuthOptions = {
     events: {
         async signIn({ user }) {
             await mergeAnonymousCartIntoUserAccount(user.id)
-        },
+        }
     }
 }
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions) as NextApiRequest | NextApiResponse
 
 export { handler as GET, handler as POST }
